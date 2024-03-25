@@ -1,0 +1,103 @@
+<!DOCTYPE html> <!-- 현재 문서가 html5로 언어로 작성한 웹문서라는 뜻 -->
+<html lang="en">
+<!--
+lang="en" 영어로된 문서
+html 웹 문서의 시작과 끝을 나태낸다
+-->
+<head> <!-- 웹 브라우저가 웹 문서를 해석하는대 필요한 정보를 입력하는 부분-->
+    <meta charset="UTF-8"> <!-- 파일 형식이 UTF-8 이라는 뜻, 인코딩 파일 지정-->
+    <title>Title</title> <!-- 웹 브라우저 제목에 표시됨 -->
+</head>
+<body> <!-- 실제 웹 브라우저 화면에 나타나는 내용 -->
+<div id="container"> <!-- 문서 구조를 구분할때 사용합니다-->
+    <div div="logo"> <h1>로고</h1></div>
+    <h1>제목 태그<br></h1> <!-- <hn></hn> n: 1~6 제목을 뜻하는 태그-->
+    <h2>부제목<br></h2>
+    <strong>굵게 강조하는 태그</strong><br>
+    <b>굵게 표시할 텍스트</b><br>
+    <em>이탤릭체로 강조하는 태그</em><br>
+    <i>이탤릭체로 표시하는 태그</i><br>
+    <u>밑줄 긋기</u><br>
+    <del>공동 작업문서에서 기존 내용을 삭제합니다</del><br>
+    <ins>공동 작업 문서에서 새로운 내용을 삽입합니다</ins><br>
+    <s>취소선을 표시합니다</s><br>
+    안녕<sup>위 첨자를 표시합니다</sup> 반가워<br>
+    안녕<sub>아래 첨자를 표시합니다</sub> 반가워<br>
+    <p>가격: 13,000원 <small>(부가세 별도)</small></p> <!-- small 태그: 부가 정보 처럼 작게 표시 해도 되는 텍스트 입니다-->
+    <p>
+        내가 경험한 가장 흥미진진한 일은 누군가를 만나는 일이다 - 영화, <cite>'비포선센'</cite> 중
+        <!-- 웹 문서나 포스트에서 참고 내용을 표시합니다 -->
+    </p>
+    <addr title="Internet of Things">Iot</addr><br>
+    <!-- 줄임말을 표시하고 tilte 석성을 함께 사용할 수 있습니다.-->
+    레드향은 한라봉과 귤을 교배한 것으로 <br>
+    일반 귤보다 2~3배 크고, 과육이 붉고 통통하다.<br>
+    <blockquote> <!-- 인용문 태그 -->
+        비타민 C와 비타민 P가 풍부해<br>
+        혈핵순한, 감기예방 등에 좋은 것을로 알려져 있다.<br>
+    </blockquote>
+
+    <header><!-- header 태그는 말그대로 해더를 뜻합니다. 검색 창이나 사이트메뉴를 삽입합니다 -->
+        <nav>
+            네비게이션 태그 문서 안에서 다른 위치로 이동할때 사용함<br>
+            검색창이나 메뉴를 삽입함<br>
+        </nav>
+        <main >
+            <section id="section1">
+                콘텐츠 영역을 나타내는 코드 section<br>
+            </section>
+            <section id="section2">
+                콘텐츠 영역을 나타내는 코드 section<br>
+            </section>
+        </main>
+    </header>
+    <footer>
+        맨 아래쪽에 있는 푸터 영역을 만듭니다<br>
+        푸터는 사이트 정보나 저작권 정보, 연락처 등 넣습니다<br>
+        푸터 영역에는 header, section, article 태그를 사용할 수 있습니다<br>
+    </footer>
+</div>
+<ol type="1" start="2">
+    <!--
+    type은 영문자나 로마 숫자 등으로 순서를 나타 낼 수 있습니다.
+    start태그는 시작 번호를 바꿀수 있음
+    -->
+    <li>항목</li>
+    <li>항목</li>
+    <li>항목</li>
+    <li>항목</li>
+</ol>
+
+<ul> <!-- 순서 없는 목록을 만들때 사용, 목록 앞에 작은 원이나-->
+    <li>항목</li>
+    <li>항목</li>
+</ul>
+
+
+<h2>상품 구성</h2> <!-- 설명 목록을 만드는 태그-->
+<dl>
+    <dt>선물용</dt>
+    <dd>소과 13~16과</dd>
+    <dd>중과 15~19과</dd>
+</dl>
+
+<table border="solid" bgcolor="aqua">
+    <caption>표의 제목</caption>
+    <tr>
+        <td>1행 1열</td>
+        <td>1행 2열</td>
+    </tr>
+    <tr>
+        <td>2행 1열</td>
+        <td>2행 2열</td>
+    </tr>
+</table>
+
+<!--
+<td rowspan="합칠 세로의 셀 갯수">셀의 내용</td>
+rowspan과 colspan은 바로 아래에 있는 <tb> 만큼 셀을 합친다.
+<td colspan="합칠 가로의 셀 갯수">셀의 내용</td>
+-->
+
+</body>
+</html>
