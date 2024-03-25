@@ -1,1 +1,1 @@
-# -University_study_material
+# 학교 수업 자료
