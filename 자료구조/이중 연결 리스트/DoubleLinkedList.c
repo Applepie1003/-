@@ -1,39 +1,38 @@
-#include <stdlib.h>
 #include "DoubleLinkedList.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-linkedlist_h* createLinkedList_h(void) {
-    linkedlist_h* DL;
-    DL = (linkedlist_h*) malloc(sizeof(linkedlist_h));
+linkedList_h *createLinkedList_h(void) {
+    linkedList_h * DL;
+    DL = (linkedList_h*) malloc(sizeof(linkedList_h));
     DL->head = NULL;
     return DL;
 }
 
-void printList(linkedlist_h* DL) {
+void printList(linkedList_h* DL) {
     listNode *p;
-    if(DL->head == NULL) return;
     p = DL->head;
-    printf("( ) = {");
-    while(p->rlink != NULL) {
-
+    printf("DL = (");
+    while(p != NULL) {
         printf("%s", p->data);
-        // if(p->rlink != NULL)
-        printf(", ");
+        if (p->rlink != NULL) printf(", ");
         p = p->rlink;
     }
-    printf("}\n");
+    printf(") \n");
 }
 
-void insertNode(linkedlist_h* DL, listNode* pre, char* x) {
-    listNode* newNode;
+void insertNode(linkedList_h* DL, listNode* pre, char* x) {
+    listNode *newNode;
     newNode = (listNode*)malloc(sizeof(listNode));
     strcpy(newNode->data, x);
-    if(DL->head == NULL) {
-        return;
-    } else if(pre->rlink == NULL) {
-        pre->rlink = newNode;
+    if (DL->head == NULL) {
+        newNode->llink = NULL;
+        newNode->rlink = NULL;
+        DL->head = newNode;
+    } else if (pre->rlink == NULL){
         newNode->llink = pre;
+        pre->rlink = newNode;
         newNode->rlink = NULL;
     } else {
         newNode->rlink = pre->rlink;
@@ -43,32 +42,27 @@ void insertNode(linkedlist_h* DL, listNode* pre, char* x) {
     }
 }
 
-void deleteNode(linkedlist_h* DL, listNode* old) {
-    listNode* pre;
-    listNode* p;
-    pre = old->llink;
-    if(DL->head == NULL || old == NULL) return;
+void deleteNode(linkedList_h* DL, listNode* old) {
+    if (DL == NULL) return;
+    else if (old == NULL) return;
     else {
-        if(old == DL->head) {
-            pre->rlink = old->rlink;
-            old->rlink->llink = pre;
-            p = old;
-            free(p);
-            return;
+        if (old->rlink == NULL) {
+            old->llink = NULL;
+            free(old);
+        } else {
+            old->llink->rlink = old->rlink;
+            old->rlink->llink = old->llink;
+            free(old);
         }
-        pre->rlink = old->rlink;
-        old->rlink->llink = pre;
-        p = old;
-        free(p);
-        return;
     }
 }
 
-linkedlist_h* searchNode(linkedlist_h* DL, char* x) {
-    listNode* temp;
+linkedList_h* searchNode(linkedList_h* DL, char* x) {
+    listNode *temp;
     temp = DL->head;
-    while(temp != NULL) {
-        if(strcmp(temp->data, x) == 0) return temp;
+
+    while (temp->rlink != NULL) {
+        if (strcmp(temp->data, x) == 0) return temp;
         else temp = temp->rlink;
     }
     return temp;

@@ -4,29 +4,29 @@
 #include "DoubleLinkedList.h"
 
 int main(void) {
-    linkedlist_h * DL;
+    linkedList_h *DL;
     listNode* p;
 
-    DL = createLinkedList_h();  // °ø¹é ¸®½ºÆ®
-    printf("(1) ÀÌÁß ¿¬°á ¸®½ºÆ® »ı¼ºÇÏ±â! \n");
+    DL = createLinkedList_h();  // ???? ?????
+    printf("(1) ê³µë°± ë¦¬ìŠ¤íŠ¸ ìƒì„±í•˜ê¸° \n");
     printList(DL);
 
-    printf("\n(2) ÀÌÁß ¿¬°á ¸®½ºÆ®¿¡ [¿ù] ³ëµå »ğÀÔÇÏ±â! \n");
-    insertNode(DL, NULL, "¿ù");
+    printf("\n(2)\n");
+    insertNode(DL, NULL, "ì›”");
     printList(DL);
 
-    printf("\n(3) ÀÌÁß ¿¬°á ¸®½ºÆ®ÀÇ [¿ù] ³ëµå µÚ¿¡ [¼ö] ³ëµå »ğÀÔÇÏ±â! \n");
-    p = searchNode(DL, "¿ù"); insertNode(DL, p, "¼ö");
+    printf("\n(3) \n");
+    p = searchNode(DL, "??"); insertNode(DL, p, "ê¸ˆ");
     printList(DL);
 
-    printf("\n(4) ÀÌÁß ¿¬°á ¸®½ºÆ®ÀÇ [¼ö] ³ëµå µÚ¿¡ [±İ] ³ëµå »ğÀÔÇÏ±â! \n");
-    p = searchNode(DL, "¼ö"); insertNode(DL, p, "±İ");
+    printf("\n(4)\n");
+    p = searchNode(DL, "ì›”"); insertNode(DL, p, "ìˆ˜");
     printList(DL);
 
-    printf("\n(5) ÀÌÁß ¿¬°á ¸®½ºÆ®¿¡¼­ [¼ö] ³ëµå »èÁ¦ÇÏ±â! \n");
-    p = searchNode(DL, "¼ö"); deleteNode(DL, p);
+    printf("\n(5)\n");
+    p = searchNode(DL, "ìˆ˜"); deleteNode(DL, p);
     printList(DL);
 
-    getchar(); // ÇÁ·Î±×·¥ÀÌ Á¾·áµÇ´Â °ÍÀ» ¹æÁöÇÏ±â À§ÇÔ
+    getchar();
     return 0;
 }
