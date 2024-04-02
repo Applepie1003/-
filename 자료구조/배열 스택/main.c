@@ -3,22 +3,22 @@
 
 int main(void) {
     element item;
-    printf("\n** ���� ���� ���� **\n");
+    printf("\n** 배열 연결 리스트 **\n");
     printStack();
-    push(1);	printStack();		// 1 ����
-    push(2);  printStack();		// 2 ����
-    push(3);	printStack();		// 3 ����
+    push(1);	printStack();
+    push(2);  printStack();
+    push(3);	printStack();
 
-    item = peek();  printStack();	// ���� top�� ���� ���
+    item = peek();  printStack();
     printf("peek => %d", item);
 
-    item = pop();  printStack();	// ����
+    item = pop();  printStack();
     printf("\t pop  => %d", item);
 
-    item = pop();  printStack();	// ����
+    item = pop();  printStack();
     printf("\t pop  => %d", item);
 
-    item = pop();  printStack();	// ����
+    item = pop();  printStack();
     printf("\t pop  => %d\n", item);
 
     getchar();  return 0;

@@ -16,16 +16,17 @@ int isStackFull() {
 void push(element item) {
     if (isStackFull()) {
         printf("stack이 존재하지 않습니다.\n");
-    } else if (isStackEmpty()){
-        stack[top++] = item;
-    } else {
+    } else if (isStackEmpty()) {
         stack[top++] = item;
     }
 }
 
 element pop() {
     element item;
-    if (isStackEmpty()) printf("삭제가능한 노드가 없습니다.\n");
+    if (isStackEmpty()) {
+        printf("삭제가능한 노드가 없습니다.\n");
+        return 0;
+    }
     else {
         item = stack[top];
         stack[top] = 0;
@@ -37,6 +38,7 @@ element pop() {
 element peek() {
     if (isStackEmpty()) {
         printf("스택이 존재 하지 않습니다.\n");
+        return 0;
     }
     else {
         element item;
