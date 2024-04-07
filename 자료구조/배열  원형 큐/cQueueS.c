@@ -10,13 +10,13 @@ QueueType *createCQueue() {
     return cQ;
 }
 
-int isCQueueFull(QueueType* cQ) {
-    if (cQ->rear == Q_SIZE-1) return 1;
+int isCQueueEmpty(QueueType* cQ) {
+    if (cQ->rear == cQ->front) return 1;
     else return 0;
 }
 
-int isCQueueEmpty(QueueType* cQ) {
-    if (cQ->front == cQ->rear) return 1;
+int isCQueueFull(QueueType* cQ) {
+    if (cQ->front == ((cQ->rear+1) % Q_SIZE)) return 1;
     else return 0;
 }
 
