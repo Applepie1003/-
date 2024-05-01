@@ -1,72 +1,92 @@
+#include <stdio.h>
 #include "node.h"
 #include "bst.h"
-#include <stdio.h>
 #include <stdlib.h>
 
-treenode* searchBTS(treenode* root, element x) {
-    treenode* p;
+treeNode* searchBST(treeNode* root, element x) {
+    treeNode* p;
     p = root;
     while (p != NULL) {
-        if(x < p->key) p = p->left;
-        else if(x == p->key) return p;
-        else p = p ->right;
+        if (x < p->key) p = p->left;
+        else if (x == p->key) return p;
+        else p = p->right;
     }
-    printf("√£¥¬ ≈∞ ∞™¿Ã æ¯Ω¿¥œ¥Ÿ\n");
+    printf("\n Ï∞æÎäî ÌÇ§Í∞Ä ÏóÜÏäµÎãàÎã§!");
     return p;
 }
 
-treenode* insertBTSNode(treenode* p, element x) {
-    treenode* newnode;
+treeNode* insertBSTNode(treeNode* p, element x) {
     if (p == NULL) {
-        newnode = (treenode *) malloc(sizeof(treenode));
-        newnode->key = x;
-        newnode->left = NULL;
-        newnode->right = NULL;
+        treeNode* newNode = (treeNode*) malloc(sizeof(treeNode));
+        newNode->key = x;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        return newNode;
     }
-    else if(x < p->key) p->left = insertBTSNode(p->left, x);
-    else if(x > p->key) p->right = insertBTSNode(p->right, x);
-    else printf("¿ÃπÃ ∞∞¿∫ ≈∞ ∞™¿Ã ¿÷Ω¿¥œ¥Ÿ.");
+    else if (x < p->key) p->left = insertBSTNode(p->left, x);
+    else if (x > p->right) p->right = insertBSTNode(p->right, x);
+    else printf("Ïù¥ÎØ∏ Í∞ôÏùÄ ÌÇ§Í∞Ä ÏûàÏäµÎãàÎã§!\n");
+
     return p;
 }
 
-void deleteBTSNode(treenode* root, element key) {
-    treenode* p, *parent, *succ, * succ_parent;
-    treenode* child;
+void deleteBTSNode(treeNode* root, element key) {
+    treeNode* p, * parent, * succ, * succ_parent;
+    treeNode* child; // ÏûêÏãù ÎÖ∏Îìú
 
     parent = NULL;
     p = root;
 
-    // ªË¡¶ «“ ≥ÎµÂ ≈Ωªˆ
-    while(p != NULL && p->key != key) {
-        parent = p; // parent == ªË¡¶«“ ≥ÎµÂ
-        if(key < p->key) p = p->left;
+    // ÏÇ≠Ï†úÌï† ÎÖ∏ÎìúÏùò ÏúÑÏπò Ï∞æÍ∏∞
+    while ((p != NULL) && (p->key != key)) {
+        parent = p; // Ï∞æÏùÄ ÌÇ§Ïùò Î∂ÄÎ™®
+        if (key < p->key) p = p->left;
         else p = p->right;
+        // pÏóêÎäî ÏÇ≠Ï†úÌï† ÎÖ∏ÎìúÏùò Ï£ºÏÜåÍ∞Ä Ï¥àÍ∏∞ÌôîÎê®
     }
 
-    // ªË¡¶«“ ≥ÎµÂ∞° æ¯¥¬ ∞ÊøÏ
+    // ÏÇ≠Ï†úÌï† ÎÖ∏ÎìúÍ∞Ä ÏóÜÎäî Í≤ΩÏö∞
     if (p == NULL) {
-        printf("ªË¡¶«“ ≥ÎµÂ∞° æ¯Ω¿¥œ¥Ÿ.\n");
-        return;
+        printf("Ï∞æÎäî ÌÇ§Í∞Ä ÏóÜÏäµÎãàÎã§!");
+        return; // deleteBTSNode Ìï®Ïàò Ï¢ÖÎ£å
     }
 
-    // ªË¡¶«“ ≥ÎµÂ∞° ¥‹¿œ ≥ÎµÂ¿œ ∞ÊøÏ
-    if((p->left == NULL) && (p->right == NULL)) {
-        if(parent != NULL) {
-            if (parent->left)
+    // ÎÖ∏ÎìúÍ∞Ä ÎßêÎã® ÎÖ∏ÎìúÏù∏ Í≤ΩÏö∞
+    if ((p->left == NULL) && (p->right == NULL)) {
+        if (parent != NULL) { // Ìä∏Î¶¨Ïóê ÎÖ∏ÎìúÍ∞Ä ÎëêÍ∞ú Ïù¥ÏÉÅ ÏùºÎïå
+            if (parent->left == p) parent->left = NULL;
+            else parent->right = NULL;
+        } else root = NULL; // Ìä∏Î¶¨Ïóê ÎÖ∏ÎìúÍ∞Ä ÌïòÎÇòÎßå Ï°¥Ïû¨Ìï† Í≤ΩÏö∞
+    }
+
+    // ÏûêÏãù ÎÖ∏ÎìúÍ∞Ä ÌïúÍ∞ú Ïùº Í≤ΩÏö∞
+    else if ((p->left == NULL) || (p->right == NULL) ){
+        if (parent->left != NULL) child = p->left;
+        else child = p->right;
+
+        // ÎÅàÏñ¥ÏßÑ ÎÖ∏Îìú Ïó∞Í≤∞
+        if (parent != NULL) {
+            if (parent->left == p) parent->left = child;
+            else parent->right = child;
         }
+        else root = child;
     }
 
-    // ªË¡¶«“ ≥ÎµÂ¿« ¿⁄Ωƒ≥ÎµÂ∞° «œ≥™ ¿œ ∞ÊøÏ
-    if ((p->left == NULL) || (p->right == NULL)) {
-
+    // ÏûêÏãù ÎÖ∏ÎìúÍ∞Ä 2Í∞ú Ïùº Í≤ΩÏö∞
+    else {
+        succ_parent = p;
+        succ = p->left;
+        while (succ->right != NULL) { // ÏôºÏ™Ω ÏÑúÎ∏å Ìä∏Î¶¨ÏóêÏÑú ÌõÑÍ≥ÑÏûêÎ•º Ï∞æÏùå
+            succ_parent = succ;
+            succ = succ->right;
+        }
+        if (succ_parent->left == NULL) { // ÌõÑÍ≥ÑÏûêÏùò ÏôºÏ™Ω ÎÖ∏ÎìúÍ∞Ä ÎπÑÏñ¥ ÏûàÏùÑÎïå ÌõÑÍ≥ÑÏûêÏùò ÏôºÏ™Ω ÎÖ∏ÎìúÎ•º Î∂ÄÎ™®Ïùò ÏôºÏ™Ω ÎÖ∏ÎìúÏóê Ïó∞Í≤∞
+            succ_parent->left = succ->left;
+        } else {
+            // ÌõÑÍ≥ÑÏûê Î∂ÄÎ™® ÎÖ∏ÎìúÏùò ÏôºÏ™Ω ÎÖ∏ÎìúÍ∞Ä ÏûàÏúºÎ©¥ Î∂ÄÎ™®Ïóê Ïò§Î•∏Ï™ΩÏóê ÌõÑÍ≥ÑÏûêÏùò ÏôºÏ™Ω ÎÖ∏ÎìúÎ•º Ïó∞Í≤∞ ÏãúÌÇ®Îã§
+            succ_parent->right = succ->left;
+        }
+        p->key = succ->key;
     }
-
-    // ªË¡¶«“ ≥ÎµÂ¿« ¿⁄Ωƒ≥ÎµÂ∞° µ— ¿œ ∞ÊøÏ
-    if ((p->left != NULL) && (p->right != NULL)) {
-
-    }
+    free(p);
 }
-
-
-
-

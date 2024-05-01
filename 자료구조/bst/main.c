@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "bst.h"
-#include "node.h"
 
 void menu(void);
 
@@ -9,8 +8,8 @@ int main(void) {
     treeNode* foundedNode = NULL;
     char choice, key;
 
-    // ì´ˆê¸° ì´ì§„ íŠ¸ë¦¬ êµ¬ì„±
-    // ë…¸ë“œ Gë¥¼ ë£¨íŠ¸ ë…¸ë“œ í¬ì¸í„° rootë¡œ ì§€ì •
+    // [±×¸² 7-38]°ú °°Àº ÃÊ±â ÀÌÁø Å½»ö Æ®¸®¸¦ ±¸¼ºÇÏ°í
+    // ³ëµå G¸¦ ·çÆ® ³ëµå Æ÷ÀÎÅÍ root·Î ÁöÁ¤
     root = insertBSTNode(root, 'G');
     insertBSTNode(root, 'I');
     insertBSTNode(root, 'H');
@@ -28,31 +27,31 @@ int main(void) {
         scanf(" %c", &choice);
 
         switch (choice - '0') {
-            case 1:	printf("\t[ì´ì§„ íŠ¸ë¦¬ ì¶œë ¥]  ");
+            case 1:	printf("\t[ÀÌÁø Æ®¸® Ãâ·Â]  ");
                 displayInorder(root);  printf("\n");
                 break;
 
-            case 2:	printf("ì‚½ìž…í•  ë¬¸ìžë¥¼ ìž…ë ¥í•˜ì„¸ìš” : ");
+            case 2:	printf("»ðÀÔÇÒ ¹®ÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
                 scanf(" %c", &key);
                 insertBSTNode(root, key);
                 break;
 
-            case 3:	printf("ì‚­ì œí•  ë¬¸ìžë¥¼ ìž…ë ¥í•˜ì„¸ìš” : ");
+            case 3:	printf("»èÁ¦ÇÒ ¹®ÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
                 scanf(" %c", &key);
                 deleteBSTNode(root, key);
                 break;
 
-            case 4: printf("ì°¾ì„ ë¬¸ìžë¥¼ ìž…ë ¥í•˜ì„¸ìš” : ");
+            case 4: printf("Ã£À» ¹®ÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
                 scanf(" %c", &key);
                 foundedNode = searchBST(root, key);
                 if (foundedNode != NULL)
-                    printf("\n %cë¥¼ ì°¾ì•˜ìŠµë‹ˆë‹¤! \n", foundedNode->key);
-                else  printf("\n ë¬¸ìžë¥¼ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤. \n");
+                    printf("\n %c¸¦ Ã£¾Ò½À´Ï´Ù! \n", foundedNode->key);
+                else  printf("\n ¹®ÀÚ¸¦ Ã£Áö ¸øÇß½À´Ï´Ù. \n");
                 break;
 
             case 5: 	return 0;
 
-            default: printf("ì—†ëŠ” ë©”ë‰´ìž…ë‹ˆë‹¤. ë©”ë‰´ë¥¼ ë‹¤ì‹œ ì„ íƒí•˜ì„¸ìš”! \n");
+            default: printf("¾ø´Â ¸Þ´ºÀÔ´Ï´Ù. ¸Þ´º¸¦ ´Ù½Ã ¼±ÅÃÇÏ¼¼¿ä! \n");
                 break;
         }
     }
@@ -60,11 +59,11 @@ int main(void) {
 
 void menu(void) {
     printf("\n*---------------------------*");
-    printf("\n\t1 : íŠ¸ë¦¬ ì¶œë ¥");
-    printf("\n\t2 : ë¬¸ìž ì‚½ìž…");
-    printf("\n\t3 : ë¬¸ìž ì‚­ì œ");
-    printf("\n\t4 : ë¬¸ìž ê²€ìƒ‰");
-    printf("\n\t5 : ì¢…ë£Œ");
+    printf("\n\t1 : Æ®¸® Ãâ·Â");
+    printf("\n\t2 : ¹®ÀÚ »ðÀÔ");
+    printf("\n\t3 : ¹®ÀÚ »èÁ¦");
+    printf("\n\t4 : ¹®ÀÚ °Ë»ö");
+    printf("\n\t5 : Á¾·á");
     printf("\n*---------------------------*");
-    printf("\në©”ë‰´ìž…ë ¥ >> ");
+    printf("\n¸Þ´ºÀÔ·Â >> ");
 }
