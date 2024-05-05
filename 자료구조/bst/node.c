@@ -1,10 +1,11 @@
-#include "node.h"
 #include <stdio.h>
-
-void displayInorder(treenode* root) {
-    if (root) {
+#include "node.h"
+// 이진 트리 탐색 트리를 중위 순회 하면서 출력을 하는 연산
+void displayInorder(treeNode* root) {
+    if(root) {
         displayInorder(root->left);
-        printf("%s", root->key);
-        displayInorder(root -> right);
+        printf("%c", root->key);
+        displayInorder(root->right);
     }
 }
+

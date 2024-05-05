@@ -2,10 +2,10 @@
 
 typedef char element;
 
-typedef struct treenode {
+typedef struct treeNode {
     element key;
-    struct treenode* left;
-    struct treenode* right;
-} treenode;
+    struct treeNode* left;
+    struct treeNode* right;
+} treeNode;
 
-void displayInorder(treenode* root);
+void displayInorder(treeNode* root);
