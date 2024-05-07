@@ -13,7 +13,7 @@ class MyMouseListener implements MouseListener, MouseMotionListener {
 	public void mouseDragged(MouseEvent e) {
 		int x = e.getX(); int y = e.getY();
 		
-		Component.cp = (Component)e.getSource();
+		Component cp = (Component)e.getSource();
 		cp.setLocation(x+cp.getX()-25, y+cp.getY() -25);
 		System.out.printf("x=%d, y=%d\n", x, y);
 	}
@@ -27,12 +27,12 @@ public class GUI_8 {
 		JPanel panel = new JPanel();
 
 		panel.setBackground(Color.white);
-		panel.setpreferredSize(new Dimension(400, 400));
+		panel.setPreferredSize(new Dimension(400, 400));
 		
 		JButton btn_end = new JButton("End");
 		btn_end.setBounds(165, 360, 70, 30);
 		btn_end.addActionListener(new ActionListener() {
-			public void actionPerfermed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 				}
 			} );
